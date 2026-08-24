@@ -1,0 +1,257 @@
+/* ================================================================= */
+/* APEX MARKET - Full-Width Admin Dashboard CSS                      */
+/* ================================================================= */
+
+.apex-dashboard-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.apex-dashboard-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Header */
+.apex-dashboard-header {
+  margin-bottom: 2.5rem;
+}
+
+.apex-dashboard-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.apex-dashboard-header p {
+  font-size: 1.05rem;
+  color: #64748b;
+}
+
+/* Card Wrapper */
+.apex-dashboard-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.apex-dashboard-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 1rem;
+}
+
+/* Form Layout */
+.apex-dashboard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.apex-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .apex-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.apex-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.apex-span-field {
+  grid-column: 1 / -1;
+}
+
+.apex-field label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: -0.01em;
+}
+
+.apex-field input,
+.apex-field select,
+.apex-field textarea {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  color: #0f172a;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.apex-field input:focus,
+.apex-field select:focus,
+.apex-field textarea:focus {
+  border-color: #4f46e5;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.apex-field input::placeholder,
+.apex-field textarea::placeholder {
+  color: #94a3b8;
+}
+
+.apex-field select {
+  cursor: pointer;
+}
+
+.apex-field textarea {
+  resize: vertical;
+}
+
+/* Photo Upload Area */
+.apex-photo-upload-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.apex-upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 140px;
+  height: 120px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  color: #4f46e5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.apex-upload-box:hover {
+  border-color: #4f46e5;
+  background: #eef2ff;
+}
+
+.apex-upload-box span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.apex-preview-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.apex-preview-thumb {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+}
+
+.apex-preview-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-thumb-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #ffffff;
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.apex-thumb-remove:hover {
+  background: #ef4444;
+}
+
+/* Submit Button */
+.apex-submit-btn {
+  background-color: #4f46e5;
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.apex-submit-btn:hover {
+  background-color: #4338ca;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+}
+
+@media (max-width: 640px) {
+  .apex-dashboard-page {
+    padding: 1.5rem 1rem;
+  }
+  .apex-dashboard-card {
+    padding: 1.5rem;
+  }
+  .apex-submit-btn {
+    width: 100%;
+  }
+}

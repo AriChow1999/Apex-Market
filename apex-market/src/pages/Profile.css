@@ -1,0 +1,225 @@
+.apex-profile-page {
+  background-color: #f8fafc;
+  min-height: 90vh;
+  padding: 3rem 1.5rem;
+  font-family: inherit;
+  color: #0f172a;
+}
+
+.apex-profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Header Text */
+.apex-profile-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+}
+
+.apex-profile-header p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* User Identity Banner Card */
+.apex-profile-identity-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.apex-avatar-circle {
+  width: 60px;
+  height: 60px;
+  background: #f1f5f9;
+  color: #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.apex-identity-info h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+}
+
+.apex-identity-info p {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* Settings Stack Configuration (Vertical Column) */
+.apex-settings-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.apex-settings-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Card Header Icons & Text */
+.apex-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.apex-card-icon-wrapper {
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 0.6rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apex-card-header h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+}
+
+.apex-card-header p {
+  font-size: 0.815rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Forms & Inputs */
+.apex-settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.apex-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.apex-form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.apex-form-group input {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.925rem;
+  color: #0f172a;
+  transition: all 0.2s ease;
+}
+
+.apex-form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Action Buttons */
+.apex-save-btn {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.apex-save-btn:hover {
+  background: #1e293b;
+}
+
+/* Messages & Badges */
+.apex-success-msg {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.825rem;
+  color: #16a34a;
+  font-weight: 500;
+  margin-top: -0.2rem;
+}
+
+.apex-success-msg.error {
+  color: #dc2626;
+}
+
+/* Locked Credentials Box */
+.apex-fixed-email-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.apex-email-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.apex-email-info span {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.apex-email-info strong {
+  font-size: 0.95rem;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.apex-locked-badge {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+}

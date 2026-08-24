@@ -1,0 +1,378 @@
+/* ==========================================================================
+   PREMIUM ENHANCED CART PAGE STYLING
+   ========================================================================== */
+
+.apex-cart-page {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: calc(100vh - 4.5rem);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  font-family: inherit;
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+.apex-cart-container {
+  width: 100%;
+  max-width: 110rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.apex-cart-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1.5rem;
+}
+
+.apex-cart-header h1 {
+  font-size: 2.25rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.apex-cart-header h1 svg {
+  color: #2563eb;
+}
+
+.apex-cart-header p {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.apex-empty-cart {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 6rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  color: #94a3b8;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+}
+
+.apex-empty-cart h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.apex-empty-cart p {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+/* Grid Layout */
+.apex-cart-content {
+  display: grid;
+  grid-template-columns: 1fr 26rem;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.apex-cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.apex-cart-item-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.apex-cart-item-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 30px -4px rgba(37, 99, 235, 0.08);
+}
+
+.apex-cart-item-thumb {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  flex-shrink: 0;
+  background: #f8fafc;
+}
+
+.apex-cart-item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apex-cart-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-grow: 1;
+}
+
+.apex-product-id {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #2563eb;
+  text-transform: uppercase;
+  background: #eff6ff;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.3rem;
+  width: fit-content;
+}
+
+.apex-product-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.apex-unit-price {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.apex-cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Quantity Stepper Component */
+.apex-quantity-stepper {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.apex-quantity-stepper button {
+  background: transparent;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #334155;
+  transition: background 0.2s ease;
+}
+
+.apex-quantity-stepper button:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.apex-quantity-stepper button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.apex-quantity-stepper span {
+  width: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.apex-product-amount {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #0f172a;
+  min-width: 5rem;
+  text-align: right;
+}
+
+.apex-remove-btn {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fee2e2;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.apex-remove-btn:hover {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+
+/* Summary Card */
+.apex-cart-summary-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: 6rem;
+}
+
+.apex-cart-summary-card h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.apex-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.apex-discount-row {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.apex-total-row {
+  padding-top: 0.75rem;
+  border-top: 1px dashed #e2e8f0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.apex-final-amount {
+  color: #2563eb;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.apex-promo-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.apex-promo-input-box {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.apex-promo-input-box svg {
+  position: absolute;
+  left: 0.75rem;
+  color: #94a3b8;
+}
+
+.apex-promo-input-box input {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.75rem 0 2.25rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  color: #0f172a;
+}
+
+.apex-promo-input-box input:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #ffffff;
+}
+
+.apex-promo-apply-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.apex-promo-apply-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.apex-checkout-btn {
+  width: 100%;
+  height: 3.25rem;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  margin-top: 0.5rem;
+}
+
+.apex-checkout-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .apex-cart-page {
+    padding: 2rem 1.5rem;
+  }
+  .apex-cart-content {
+    grid-template-columns: 1fr;
+  }
+  .apex-cart-item-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .apex-cart-item-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .apex-cart-summary-card {
+    position: static;
+  }
+}

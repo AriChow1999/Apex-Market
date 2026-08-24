@@ -1,0 +1,160 @@
+/* ==========================================================================
+   MODAL STYLING (Shared by Login & Signup)
+   ========================================================================== */
+
+.apex-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.apex-modal-box {
+  width: 100%;
+  max-width: 25rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.apex-modal-exit {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.apex-modal-exit:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.apex-modal-top {
+  margin-bottom: 1.5rem;
+}
+
+.apex-modal-top h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+
+.apex-modal-top p {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.apex-error-banner {
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  color: #dc2626;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.apex-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.apex-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.apex-field label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.apex-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Updated padding since icons are removed */
+.apex-input-box input {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.85rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.apex-input-box input:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #ffffff;
+}
+
+.apex-submit-btn {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 2.75rem;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.apex-submit-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.apex-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.apex-modal-footer {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.apex-text-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+}
+
+.apex-text-link:hover {
+  text-decoration: underline;
+}
