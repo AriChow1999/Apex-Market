@@ -133,8 +133,8 @@ const Cart = () => {
           }
         },
         prefill: {
-          name: "", 
-          email: "", 
+          name: "",
+          email: "",
         },
         theme: {
           color: "#0f172a"
@@ -153,8 +153,7 @@ const Cart = () => {
 
   // Calculations
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-  const shipping = subtotal > 0 ? 15.00 : 0;
-  const totalAmount = subtotal + shipping;
+  const totalAmount = subtotal;
   const totalItemsCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   if (loading) {
@@ -245,18 +244,13 @@ const Cart = () => {
                 <span>₹{subtotal.toFixed(2)}</span>
               </div>
 
-              <div className="apex-summary-row">
-                <span>Estimated Shipping</span>
-                <span>₹{shipping.toFixed(2)}</span>
-              </div>
-
               <div className="apex-summary-row apex-total-row">
                 <span>Total Amount</span>
                 <span className="apex-final-amount">₹{totalAmount.toFixed(2)}</span>
               </div>
 
-              <button 
-                className="apex-checkout-btn" 
+              <button
+                className="apex-checkout-btn"
                 onClick={handleCheckout}
                 disabled={checkoutLoading}
               >
