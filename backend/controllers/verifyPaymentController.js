@@ -2,15 +2,10 @@ const Order = require('../schemas/orderSchema');
 const Cart = require('../schemas/CartSchema');
 const Product = require('../schemas/ProductSchema');
 const crypto = require('crypto');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+// Initialize Resend with your API key from Render environment variables
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 exports.verifyPayment = async (req, res) => {
   try {
@@ -24,7 +19,7 @@ exports.verifyPayment = async (req, res) => {
       .digest("hex");
 
     if (razorpay_signature === expectedSign) {
-      // 1. Fetch the user's cart[cite: 6]
+      // 1. Fetch the user's cart
       const cart = await Cart.findOne({ email: req.user.email });
       if (!cart || cart.products.length === 0) {
         return res.status(404).json({ error: 'Cart not found' });
@@ -33,7 +28,7 @@ exports.verifyPayment = async (req, res) => {
       let totalAmount = 0;
       const orderProducts = [];
 
-      // 2. Build the order snapshot[cite: 6]
+      // 2. Build the order snapshot
       for (const item of cart.products) {
         const productData = await Product.findOne({ id: item.productId });
         if (!productData) {
@@ -50,7 +45,7 @@ exports.verifyPayment = async (req, res) => {
         });
       }
 
-      // 3. Save the permanent Order document[cite: 2, 6]
+      // 3. Save the permanent Order document
       const newOrder = new Order({
         email: req.user.email,
         products: orderProducts,
@@ -62,7 +57,7 @@ exports.verifyPayment = async (req, res) => {
 
       await newOrder.save();
 
-      // 4. Delete the cart from the database[cite: 1, 6]
+      // 4. Delete the cart from the database
       await Cart.findOneAndDelete({ email: req.user.email });
 
       // 5. Build HTML items list for email receipt
@@ -73,41 +68,38 @@ exports.verifyPayment = async (req, res) => {
         </tr>
       `).join('');
 
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: req.user.email,
-        subject: `Order Receipt - #${newOrder._id}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h2 style="color: #4f46e5; text-align: center;">ApexMarket Order Receipt</h2>
-            <p>Thank you for your purchase! Your payment has been successfully verified.</p>
-            <p><strong>Order ID:</strong> ${newOrder._id}</p>
-            <p><strong>Payment ID:</strong> ${razorpay_payment_id}</p>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-              <thead>
-                <tr style="background-color: #f8fafc;">
-                  <th style="padding: 10px; text-align: left;">Item</th>
-                  <th style="padding: 10px; text-align: right;">Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${itemsListHtml}
-              </tbody>
-            </table>
-            <h3 style="text-align: right; color: #1e293b; margin-top: 20px;">Total Paid: ₹${totalAmount.toFixed(2)}</h3>
-            <p style="text-align: center; color: #64748b; font-size: 12px; margin-top: 30px;">If you have any questions, feel free to contact our support team.</p>
-          </div>
-        `
-      };
-
-      // 6. Send email notification (non-blocking or handled gracefully)
-      transporter.sendMail(mailOptions, (mailErr, info) => {
-        if (mailErr) {
-          console.error('Error sending receipt email:', mailErr);
-        } else {
-          console.log('Receipt email sent:', info.response);
-        }
-      });
+      // 6. Send email notification via Resend (handled asynchronously)
+      try {
+        await resend.emails.send({
+          from: 'APEX MARKET <onboarding@resend.dev>',
+          to: [req.user.email],
+          subject: `Order Receipt - #${newOrder._id}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
+              <h2 style="color: #4f46e5; text-align: center;">ApexMarket Order Receipt</h2>
+              <p>Thank you for your purchase! Your payment has been successfully verified.</p>
+              <p><strong>Order ID:</strong> ${newOrder._id}</p>
+              <p><strong>Payment ID:</strong> ${razorpay_payment_id}</p>
+              <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <thead>
+                  <tr style="background-color: #f8fafc;">
+                    <th style="padding: 10px; text-align: left;">Item</th>
+                    <th style="padding: 10px; text-align: right;">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${itemsListHtml}
+                </tbody>
+              </table>
+              <h3 style="text-align: right; color: #1e293b; margin-top: 20px;">Total Paid: ₹${totalAmount.toFixed(2)}</h3>
+              <p style="text-align: center; color: #64748b; font-size: 12px; margin-top: 30px;">If you have any questions, feel free to contact our support team.</p>
+            </div>
+          `
+        });
+        console.log('Receipt email sent successfully via Resend.');
+      } catch (mailErr) {
+        console.error('Error sending receipt email:', mailErr);
+      }
 
       // 7. Send final success response back to the frontend
       return res.status(200).json({
