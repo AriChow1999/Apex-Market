@@ -4,7 +4,9 @@ import { Search, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Appliances.css';
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:5000' 
+    : import.meta.env.VITE_API_URL;
 
 const fetchAppliancesProducts = async () => {
   const response = await axios.post(`${API_BASE_URL}/api/products`, {

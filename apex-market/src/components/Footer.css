@@ -1,5 +1,5 @@
 /* ================================================================= */
-/* APEX MARKET - Global Light Theme Footer                           */
+/* APEX MARKET - Fully Responsive Global Footer                     */
 /* ================================================================= */
 
 .apex-footer {
@@ -7,7 +7,7 @@
   background-color: #ffffff;
   color: #64748b;
   font-family: inherit;
-  padding: 5rem 4rem 2.5rem 4rem;
+  padding: 4rem 2rem 2rem 2rem;
   box-sizing: border-box;
   border-top: 1px solid #e2e8f0;
 }
@@ -17,32 +17,28 @@
   margin: 0 auto;
 }
 
-/* Balanced 3-Column Grid Layout */
-.apex-footer-grid-balanced {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1.2fr;
-  gap: 4rem;
-  align-items: start;
-  padding-bottom: 4rem;
+/* Responsive Grid Layout */
+.apex-footer-grid-balanced,
+.apex-footer-grid,
+.apex-footer-grid-3col {
+  display: grid !important;
+  /* Automatically adjust columns based on available space, falling back to stack on mobile */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  gap: 3rem !important;
+  align-items: start !important;
+  padding-bottom: 3rem;
   border-bottom: 1px solid #e2e8f0;
-}
-
-@media (max-width: 900px) {
-  .apex-footer-grid-balanced {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
 }
 
 /* Brand Column */
 .apex-brand-link {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: #0f172a;
   text-decoration: none;
   letter-spacing: -0.03em;
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .apex-brand-accent {
@@ -50,14 +46,15 @@
 }
 
 .apex-footer-about {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.6;
   color: #64748b;
-  max-width: 380px;
+  max-width: 100%;
 }
 
-/* Links Column */
-.apex-footer-links-col h5 {
+/* Links Column (Collections) */
+.apex-footer-links-col h5,
+.apex-footer-perks-col h5 {
   font-size: 1.05rem;
   font-weight: 700;
   color: #0f172a;
@@ -88,72 +85,28 @@
   transform: translateX(4px);
 }
 
-/* Newsletter Column */
-.apex-footer-newsletter-col h5 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.01em;
-}
-
-.apex-footer-newsletter-col p {
-  font-size: 0.92rem;
-  color: #64748b;
-  margin-bottom: 1.25rem;
-  line-height: 1.5;
-}
-
-.apex-footer-form {
+/* Perks / Trust Badges Column */
+.apex-perks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  gap: 0.5rem;
-  background: #f8fafc;
-  padding: 0.35rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  transition: all 0.2s ease;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.apex-footer-form:focus-within {
-  border-color: #4f46e5;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-}
-
-.apex-footer-form input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  padding: 0.65rem 0.85rem;
-  color: #0f172a;
-  font-size: 0.95rem;
-  outline: none;
-}
-
-.apex-footer-form input::placeholder {
-  color: #94a3b8;
-}
-
-.apex-footer-form button {
-  background-color: #4f46e5;
-  color: #ffffff;
-  border: none;
-  padding: 0.65rem 1.25rem;
-  border-radius: 9px;
-  font-weight: 600;
-  font-size: 0.9rem;
+.apex-perks-list li {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.2);
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
-.apex-footer-form button:hover {
-  background-color: #4338ca;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+.apex-perk-icon {
+  color: #4f46e5;
+  flex-shrink: 0;
 }
 
 /* Bottom Bar */
@@ -161,7 +114,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   font-size: 0.88rem;
   color: #64748b;
   flex-wrap: wrap;
@@ -183,15 +136,22 @@
   color: #0f172a;
 }
 
-@media (max-width: 640px) {
+/* Mobile Adjustments */
+@media (max-width: 768px) {
   .apex-footer {
-    padding: 3rem 1.5rem 1.5rem 1.5rem;
+    padding: 2.5rem 1.25rem 1.5rem 1.25rem;
   }
+  
+  .apex-footer-grid-balanced,
+  .apex-footer-grid,
+  .apex-footer-grid-3col {
+    gap: 2rem !important;
+    padding-bottom: 2rem;
+  }
+
   .apex-footer-bottom {
     flex-direction: column;
-    align-items: flex-start;
-  }
-  .apex-footer-legal-links {
-    gap: 1.25rem;
+    align-items: center;
+    text-align: center;
   }
 }

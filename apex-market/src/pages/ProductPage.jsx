@@ -4,7 +4,9 @@ import { ShoppingCart, Star, ShieldCheck, Truck, RotateCcw, Check } from 'lucide
 import axios from 'axios';
 import { toast } from "react-toastify";
 import './ProductPage.css';
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:5000' 
+    : import.meta.env.VITE_API_URL;
 
 const ProductPage = () => {
   const { id } = useParams();

@@ -4,7 +4,9 @@ import { useAuthStore } from '../store/ZustandStore';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import './Profile.css';
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:5000' 
+    : import.meta.env.VITE_API_URL;
 
 const Profile = () => {
   // Pull user, token, and updateUser action from Zustand store

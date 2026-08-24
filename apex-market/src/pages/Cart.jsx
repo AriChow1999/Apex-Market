@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { ShoppingCart, Trash2, ArrowRight, Plus, Minus } from 'lucide-react';
 import axios from 'axios';
 import './Cart.css';
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:5000' 
+    : import.meta.env.VITE_API_URL;
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
