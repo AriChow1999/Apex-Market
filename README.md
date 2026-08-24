@@ -1,6 +1,6 @@
 # APEX MARKET 🚀
 
-Apex Market is a high-end, full-stack e-commerce web application designed to deliver a seamless and modern shopping experience. It features curated collections ranging from official sports jerseys to cutting-edge electronics and smart home appliances, complete with dynamic search, pagination, and automated VIP newsletter onboarding.
+Apex Market is a high-end, full-stack e-commerce web application designed to deliver a seamless and modern shopping experience. It features curated collections ranging from official sports jerseys to cutting-edge electronics and smart home appliances, complete with dynamic search, pagination.
 
 ---
 
