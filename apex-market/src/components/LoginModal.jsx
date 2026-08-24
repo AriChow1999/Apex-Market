@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './AuthModals.css';
 import { toast } from 'react-toastify';
-import { useAuthStore } from "../store/ZustandStore.js"
+import { useAuthStore } from "../store/ZustandStore.js";
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const LoginModal = ({ isOpen, onClose, onSwitchToSignup }) => {
   const [email, setEmail] = useState('');
@@ -13,7 +15,6 @@ const LoginModal = ({ isOpen, onClose, onSwitchToSignup }) => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
   const login = useAuthStore((state) => state.login);
 
   if (!isOpen) return null;
@@ -24,17 +25,15 @@ const LoginModal = ({ isOpen, onClose, onSwitchToSignup }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
         email,
         password,
       });
 
       const { token, user } = response.data;
 
-      login(token, user)
-
-      toast.success(`Welcome ${user.username}`)
-
+      login(token, user);
+      toast.success(`Welcome ${user.username}`);
 
       setEmail('');
       setPassword('');

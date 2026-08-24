@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import './Footer.css';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -18,7 +19,7 @@ const Footer = () => {
         setMessage('');
 
         try {
-            const response = await axios.post('http://localhost:5000/api/subscribe', { email });
+            const response = await axios.post(`${API_BASE_URL}/api/subscribe`, { email });
             setStatus('success');
             setMessage(response.data.message || 'Subscribed successfully! Check your inbox.');
             setEmail('');

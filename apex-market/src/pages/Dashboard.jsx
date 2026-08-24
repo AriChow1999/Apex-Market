@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from "react-toastify";
 import { useQueryClient } from '@tanstack/react-query';
 import './Dashboard.css';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Dashboard = () => {
     const queryClient = useQueryClient();
@@ -58,7 +59,7 @@ const Dashboard = () => {
         });
 
         try {
-            const response = await axios.post('http://localhost:5000/products-upload', formData);
+            const response = await axios.post(`${API_BASE_URL}/products-upload`, formData);
 
             console.log('Server Response:', response.data);
             toast.success('Product uploaded successfully!');
@@ -87,7 +88,7 @@ const Dashboard = () => {
         if (!deleteId.trim()) return;
 
         try {
-            const response = await axios.delete(`http://localhost:5000/products/${deleteId}`);
+            const response = await axios.delete(`${API_BASE_URL}/products/${deleteId}`);
 
             toast.success(response.data.message);
 

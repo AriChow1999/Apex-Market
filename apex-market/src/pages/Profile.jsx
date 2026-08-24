@@ -4,6 +4,7 @@ import { useAuthStore } from '../store/ZustandStore';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import './Profile.css';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Profile = () => {
   // Pull user, token, and updateUser action from Zustand store
@@ -26,7 +27,7 @@ const Profile = () => {
     try {
       // API call to update username on the backend
       const response = await axios.patch(
-        'http://localhost:5000/api/auth/update-username',
+        `${API_BASE_URL}/api/auth/update-username`,
         { username: newUsername },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -57,7 +58,7 @@ const Profile = () => {
     try {
       // API call to update password on the backend
       await axios.patch(
-        'http://localhost:5000/api/auth/update-password',
+        `${API_BASE_URL}/api/auth/update-password`,
         { newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Package, ShoppingBag, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import axios from 'axios';
 import './Orders.css';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const ITEMS_PER_PAGE = 5;
 
@@ -18,7 +19,7 @@ const Orders = () => {
                 setLoading(true);
                 const token = localStorage.getItem('token');
 
-                const response = await axios.get('http://localhost:5000/api/orders', {
+                const response = await axios.get(`${API_BASE_URL}/api/orders`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 

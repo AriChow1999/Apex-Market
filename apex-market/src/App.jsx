@@ -16,7 +16,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedAdminRoute from "../ProtectedRoute/Admin-Protected-Route"
 import Orders from "./pages/Orders"
-import Checkout from "./pages/Checkout"
 import { ScrollToTop } from "./components/ScrollToTop"
 
 
@@ -39,7 +38,6 @@ function App() {
         <Route path="/admin/dashboard" element={<ProtectedAdminRoute><Dashboard /></ProtectedAdminRoute>} />
         <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
         <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
       </Routes>
       <Footer />
     </>

@@ -4,9 +4,10 @@ import { Search, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Electronics.css';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const fetchElectronicsProducts = async () => {
-  const response = await axios.post('http://localhost:5000/api/products', {
+  const response = await axios.post(`${API_BASE_URL}/api/products`, {
     category: 'electronics'
   });
   return response.data;

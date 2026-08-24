@@ -4,6 +4,7 @@ import { ShoppingCart, Star, ShieldCheck, Truck, RotateCcw, Check } from 'lucide
 import axios from 'axios';
 import { toast } from "react-toastify";
 import './ProductPage.css';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const ProductPage = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/product/${id}`);
+        const response = await axios.get(`${API_BASE_URL}/product/${id}`);
         setProduct(response.data);
         if (response.data.photos && response.data.photos.length > 0) {
           setSelectedImage(response.data.photos[0]);
@@ -41,7 +42,7 @@ const handleAddToCart = async () => {
     const token = localStorage.getItem('token');
     
     await axios.post(
-      'http://localhost:5000/api/cart',
+      `${API_BASE_URL}/api/cart`,
       { 
         productId: product.id, 
         action: 'increase' 

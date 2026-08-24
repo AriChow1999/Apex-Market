@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ShoppingCart, Trash2, ArrowRight, Plus, Minus } from 'lucide-react';
 import axios from 'axios';
 import './Cart.css';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -16,7 +17,7 @@ const Cart = () => {
         const token = localStorage.getItem('token');
 
         // 1. Fetch cart items
-        const cartResponse = await axios.get('http://localhost:5000/api/cart', {
+        const cartResponse = await axios.get(`${API_BASE_URL}/api/cart`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -32,7 +33,7 @@ const Cart = () => {
         const detailedItems = await Promise.all(
           rawCartProducts.map(async (item) => {
             try {
-              const productRes = await axios.get(`http://localhost:5000/product/${item.productId}`);
+              const productRes = await axios.get(`${API_BASE_URL}/product/${item.productId}`);
               const prod = productRes.data;
               return {
                 id: prod.id,
@@ -65,7 +66,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:5000/api/cart',
+        `${API_BASE_URL}/api/cart`,
         { productId, action: actionType },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -95,7 +96,7 @@ const Cart = () => {
 
       // 1. Create order on the backend
       const orderResponse = await axios.post(
-        'http://localhost:5000/api/create-order',
+        `${API_BASE_URL}/api/create-order`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -114,7 +115,7 @@ const Cart = () => {
           try {
             // 3. Verify payment signature on the backend
             const verifyResponse = await axios.post(
-              'http://localhost:5000/api/verify-payment',
+              `${API_BASE_URL}/api/verify-payment`,
               {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
