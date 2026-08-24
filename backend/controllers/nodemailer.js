@@ -1,15 +1,15 @@
 const nodemailer = require('nodemailer');
 
-// Configure your mail transporter (Example using Gmail or SMTP)
+// Configure your mail transporter with explicit production SMTP settings
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // or use host, port, secure fields for custom SMTP
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // true for 465, false for other ports
     auth: {
-        user: process.env.EMAIL_USER, // Your email address
-        pass: process.env.EMAIL_PASS  // Your email App Password
+        user: process.env.EMAIL_USER ? process.env.EMAIL_USER.trim() : '',
+        pass: process.env.EMAIL_PASS ? process.env.EMAIL_PASS.trim() : '' // Removes any accidental trailing spaces
     }
 });
-
-
 
 const email = async (req, res) => {
     const { email } = req.body;
@@ -19,13 +19,13 @@ const email = async (req, res) => {
     }
 
     try {
-        // Email content detailing brand range of products
+        // Email content detailing brand range of products (Website link button removed)
         const mailOptions = {
-            from: `"APEX MARKET" <${process.env.EMAIL_USER}>`,
+            from: `"APEX MARKET" <${process.env.EMAIL_USER.trim()}>`,
             to: email,
             subject: 'Welcome to APEX MARKET - Explore Our Collections!',
             html: `
-             <div style="background-color: #f8fafc; padding: 40px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+            <div style="background-color: #f8fafc; padding: 40px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
     <div style="background-color: #ffffff; color: #1e293b; padding: 40px; max-width: 600px; margin: auto; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);">
         
         <!-- Brand Header -->
@@ -79,13 +79,6 @@ const email = async (req, res) => {
             </tr>
         </table>
 
-        <!-- Call to Action Button -->
-        <div style="text-align: center; margin: 35px 0;">
-            <a href="http://localhost:5173" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);">
-                Enter Storefront
-            </a>
-        </div>
-
         <div style="height: 1px; background: linear-gradient(to right, transparent, #cbd5e1, transparent); margin-top: 40px; margin-bottom: 25px;"></div>
 
         <!-- Footer -->
@@ -106,5 +99,6 @@ const email = async (req, res) => {
         console.error('Nodemailer Error:', error);
         res.status(500).json({ error: 'Failed to send welcome email. Please try again later.' });
     }
-}
+};
+
 module.exports = email;
